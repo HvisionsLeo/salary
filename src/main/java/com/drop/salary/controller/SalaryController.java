@@ -19,12 +19,12 @@ public class SalaryController {
 
     @GetMapping("/")
     public ModelAndView goView(){
-        return new ModelAndView("/salary");
+        return new ModelAndView("/cal");
     }
 
     @PostMapping("/cal")
     public String calSalary(SalaryModel model){
         BigDecimal b = CalSalaryUtil.calSalary(model);
-        return null;
+        return b.toString();
     }
 }
