@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>对账平台监管</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<!--[if lt IE 9]>
+		<![endif]-->
+		<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+		<link rel="stylesheet" th:href="@{/css/public.css}"/>
+		<link rel="stylesheet" th:href="@{/css/ico.css}"/>
+		<link rel="stylesheet" th:href="@{/css/flatpickr.min.css}" />
+		<script th:src="@{/js/jquery.min.js}"></script>
+		<script th:src="@{/js/bootstrap.min.js}"></script>
+		<script th:src="@{/layer/layer.js}"></script>
+
+	</head>
+	<body>
+	<nav class="navbar navbar-default shadow-header margin-bot-md" style="background-color:#4ec3cc">
+		<div class="container clearfix">
+			<a class="pull-left navbar-brand" href="#">
+				<img th:src="@{/img/logo.png}"/>
+			</a>
+			<ul class="nav pull-left">
+				<li><a class="nav-link" href="#" style="font-size: 30px;">流水对账监控</a></li>
+			</ul>
+		</div>
+	</nav>
+		<section class="container-fluid form-horizontal">
+			<div class="main-count">
+				<form action="/rec/search" method="post" id="pageForm">
+					<div class="lable-content margin-bot-md">
+						<div class="form-group margin-bot-lg">
+							<div class="col-xs-2">
+								<input type="text" name="id" th:value="${model.id}" class="form-control" placeholder="交易流水号"/>
+							</div>
+							<div class="col-xs-2">
+								<input type="text" name="batchOrderId" th:value="${model.batchOrderId}" class="form-control" placeholder="商户订单号"/>
+							</div>
+							<div class="col-xs-2">
+								<input type="text" name="merOrderId" th:value="${model.merOrderId}" class="form-control" placeholder="拆分子单号"/>
+							</div>
+							<div class="col-md-2">
+								<input type="hidden" id="orderStatus" th:value="${model.orderStatus}"/>
+								<select class="form-control" name="orderStatus">
+									<option value="">订单状态</option>
+									<option value="0">成功</option>
+									<option value="1">异常</option>
+									<option value="-1">失败</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group margin-bot-lg">
+							<div class="col-xs-2">
+								<input type="text" name="name" th:value="${model.name}" class="form-control" placeholder="账户名称"/>
+							</div>
+							<div class="col-md-2">
+								<input type="hidden" id="backCode" th:value="${model.backCode}"/>
+								<select class="form-control" name="backCode">
+									<option value="">银行返回状态</option>
+									<option value="00">成功</option>
+									<option value="-1">失败</option>
+								</select>
+							</div>
+							<div class="col-xs-3">
+								<input type="text" class="form-control flatpickr startdate" name="startTime" id="startDate" th:attr="data-default-date=${model.startTime}" data-enable-time="true" data-enable-seconds="true" data-minute-Increment="1" data-max-date='today' readonly="readonly"/>
+								<span class="font16lightgray">-</span>
+								<input type="text" class="form-control flatpickr enddate" name="endTime" id="endDate" th:attr="data-default-date=${model.endTime}" data-enable-time="true" data-enable-seconds="true" data-minute-Increment="1" data-max-date='today' readonly="readonly"/>
+							</div>
+							<div class="col-xs-3 clearfix">
+								<button type="button" class="btn btn-green btn-sm" th:onclick="'javascript:queryRecordList()'">查询</button>
+								<button type="button" class="btn btn-green btn-sm" th:onclick="'javascript:resetQuery()'">重置</button>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</section>
+	</body>
+</html>

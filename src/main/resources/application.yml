@@ -1,6 +1,19 @@
 server:
   port: 8080
+  servlet:
+    context-path: /
 
 spring:
-  application:
-    name: /
+  thymeleaf:
+    check-template: true
+    check-template-location: true
+    servlet:
+      content-type: text/html
+    enabled: true
+    encoding: UTF-8
+    prefix: classpath:/templates/
+    suffix: .html
+
+  resources:
+    static-locations: classpath:/static/
+
