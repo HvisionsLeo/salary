@@ -28,7 +28,7 @@
             var holidayLeave = $("#holidayLeave").val() == '' ? 0 : $("#holidayLeave").val();
             $.ajax({
                 type: "POST",
-                url: "/cal",
+                url: "/cal.json",
                 dataType: "json",
                 data: {
                     "name": name, "baseSalary": baseSalary, "totalTask": totalTask, "realTotal": realTotal,

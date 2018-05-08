@@ -22,7 +22,7 @@ public class SalaryController {
         return new ModelAndView("/cal");
     }
 
-    @PostMapping("/cal")
+    @PostMapping("/cal.json")
     public String calSalary(SalaryModel model){
         BigDecimal b = CalSalaryUtil.calSalary(model);
         return b.toString();
