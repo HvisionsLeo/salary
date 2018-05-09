@@ -19,7 +19,7 @@ public class SalaryController {
 
     @GetMapping("/")
     public ModelAndView goView(){
-        return new ModelAndView("/cal");
+        return new ModelAndView("cal");
     }
 
     @PostMapping("/cal.json")
